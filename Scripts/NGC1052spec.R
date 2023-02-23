@@ -2,7 +2,7 @@
 #setwd('/Volumes/SSD/GBT_NGC1052')
 FWHM_sigma <- 2.0* sqrt(2.0*log(2.0))
 textVel = 980  # Label position (km/s)
-fillColor <- c(rgb(1, 0, 0, alpha=0.25), rgb(0, 1, 0, alpha=0.25), rgb(0, 0, 1, alpha=0.25))
+fillColor <- c(rgb(1, 0.75, 0.75), rgb(0.75, 1, 0.75), rgb(0.75, 0.75, 1))
 #setwd('/home/skameno/GBT_NGC1052')
 source('GBTfunction.R')
 lumiDistance <- 17.6    # Kameno+2020
@@ -20,7 +20,6 @@ fillSpec <- function(veloc, flux, baseLevel, color){       # fill the spectrum w
 }
 
 pdf("NGC1052_maser_series.pdf", width=7, height=11)
-plot(weightList[[1]], type='n', axes=TRUE, xlim=c(1000,2000), ylim=c(-0.00,0.6), xlab='LSR Velocity [km/s]', ylab='Flux Density [Jy]')
 
 
 #-------- 22-GHz plots
@@ -34,6 +33,7 @@ weightList <- list(
     c(rep(0, 263), rep(1,(2563-263)), rep(0,(4585-2563)), rep(1,(7975-4585)), rep(0,(8192-7975))),   # AGBT05C_034_05
     c(rep(0, 239), rep(1,(1156-239)), rep(0,(2709-1156)), rep(1,(7964-2709)), rep(0,(8192-7964))),   # AGBT05C_034_07
     c(rep(0, 212), rep(1,(829-212)), rep(0,(2597-829)), rep(1,(7939-2597)), rep(0,(8192-7939))))     # AGBT05C_034_10
+plot(weightList[[1]], type='n', axes=TRUE, xlim=c(1000,2000), ylim=c(-0.00,0.6), xlab='LSR Velocity [km/s]', ylab='Flux Density [Jy]')
 abline(v=1492, col='gray60', lwd=0.2, lty=2)
 fillRange <- c(1200, 2000)
 for(file_index in 1:6){
