@@ -34,7 +34,7 @@ weightList <- list(
     c(rep(0, 239), rep(1,(1156-239)), rep(0,(2709-1156)), rep(1,(7964-2709)), rep(0,(8192-7964))),   # AGBT05C_034_07
     c(rep(0, 212), rep(1,(829-212)), rep(0,(2597-829)), rep(1,(7939-2597)), rep(0,(8192-7939))))     # AGBT05C_034_10
 plot(weightList[[1]], type='n', axes=TRUE, xlim=c(1000,2000), ylim=c(-0.00,0.6), xlab='LSR Velocity [km/s]', ylab='Flux Density [Jy]')
-abline(v=1492, col='gray60', lwd=0.2, lty=2)
+
 fillRange <- c(1200, 2000)
 for(file_index in 1:6){
     levelBase <- 0.05*(10.5-file_index)
@@ -152,6 +152,7 @@ abline(h=levelBase, col='gray60', lwd=0.1)
 text_sd = '2015-08-16'
 text(textVel, levelBase+0.005, paste(lineLabel, text_sd, sep=' '), cex=0.7, adj=0, pos=4, col='darkgreen')
 #text(textVel, levelBase+0.02, text_sd, cex=0.7, adj=0, pos=4, col='darkgreen')
+abline(v=1492, col='gray60', lwd=0.2, lty=2)
 dev.off()
 
 Tb <- function(flux, freq, FWHM){
